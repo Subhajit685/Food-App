@@ -19,7 +19,7 @@ const _dirname = path.resolve();
 
 
 app.use(cors({
-    origin:["http://localhost:5173", "http://localhost:5174"],
+    origin:["http://localhost:5173"],
     credentials:true,
     methods : ["POST", "GET"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -33,10 +33,10 @@ app.use("/api/order", orderRoute)
 app.use("/images", express.static("uploads"))
 
 
-// app.use(express.static(path.join(_dirname, "/frontend/dist")));
-// app.get('*', (req,res) => {
-//     res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
-// });
+app.use(express.static(path.join(_dirname, "/frontend/dist")));
+app.get('*', (req,res) => {
+    res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(PORT, ()=>{
     console.log("server connected at "+ PORT)

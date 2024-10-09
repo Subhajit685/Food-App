@@ -19,7 +19,7 @@ const _dirname = path.resolve();
 
 
 app.use(cors({
-    origin:["http://localhost:5173"],
+    origin:"https://food-app-1ero.onrender.com",
     credentials:true,
     methods : ["POST", "GET"],
     allowedHeaders: ["Content-Type", "Authorization"],

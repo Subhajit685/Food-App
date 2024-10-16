@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import { storeContext } from '../context/Storecontext'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
 
 function PlaceOrder() {
 
@@ -30,23 +30,50 @@ function PlaceOrder() {
 
   const placeOrder = async (e) => {
     e.preventDefault()
-    let orderitems = []
-    food_list.map((item) => {
-      if (count[item._id] > 0) {
-        let iteminfo = item
-        iteminfo["Quantity"] = count[item._id]
-        orderitems.push(iteminfo)
-      }
-    })
-    const orderDetiles = {
-      items : orderitems,
-      amount : gettotalamount() + 5,
-      address : data,
-    }
+    // let orderitems = []
+    // food_list.map((item) => {
+    //   if (count[item._id] > 0) {
+    //     let iteminfo = item
+    //     iteminfo["Quantity"] = count[item._id]
+    //     orderitems.push(iteminfo)
+    //   }
+    // })
+    // const orderDetiles = {
+    //   items: orderitems,
+    //   amount: gettotalamount() + 5,
+    //   address: data,
+    // }
 
-    const res = await axios.post(`${url}/api/order/order`, orderDetiles, {withCredentials:true})
-    toast.success("Order delivered")
-    navigate("/myorder")
+    // const res = await axios.post(`${url}/api/order/order`, orderDetiles, { withCredentials: true })
+    // toast.success("Order delivered")
+    // navigate("/myorder")
+
+    const res = await axios.post(`${url}/api/payment/order`, { amount: gettotalamount() + 5 }, { withCredentials: true })
+
+    var options = {
+      "key": res.data.key, // Enter the Key ID generated from the Dashboard
+      "amount": gettotalamount() + 5, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Foodie",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": res.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "callback_url": `${url}/api/payment/paymentVerification`,
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
   }
 
 

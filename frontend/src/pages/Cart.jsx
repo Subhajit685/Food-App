@@ -60,6 +60,7 @@ function Cart() {
             <p className='text-sm font-bold mt-4'>Total</p>
             <p className='text-sm mt-4'>${gettotalamount() > 0 ? gettotalamount() + 5 : gettotalamount()}</p>
           </div>
+          
           <button className='bg-red-500 text-white sm:p-2 p-1 my-2 rounded-sm' onClick={() => navigate("/order")}>PROCEED TO CHECKOUT</button>
         </div>
 

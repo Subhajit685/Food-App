@@ -4,6 +4,7 @@ import foodRoute from "./routes/food.js"
 import userRoute from "./routes/user.route.js"
 import cartRoute from "./routes/cart.js"
 import orderRoute from "./routes/orderroute.js"
+import paymentRoute from "./routes/payment.js"
 import cors from "cors"
 import cookieParser from 'cookie-parser'
 import path from "path"
@@ -30,6 +31,7 @@ app.use("/api/food", foodRoute)
 app.use("/api/user", userRoute)
 app.use("/api/cart", cartRoute)
 app.use("/api/order", orderRoute)
+app.use("/api/payment", paymentRoute)
 app.use("/images", express.static("uploads"))
 
 

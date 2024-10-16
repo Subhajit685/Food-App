@@ -13,7 +13,7 @@ function HomeWith() {
         <img src="/beriyani.jpg" alt="" className='w-full hi mx-auto object-center object-cover border rounded' />
       </div>
 
-      <div className='absolute sm:top-96 top-56 left-10'>
+      <div className='absolute sm:top-96 top-56 left-10 px-4 md:px-8'>
         <h1 className='sm:text-6xl text-4xl font-sans font-extrabold text-white'>Delicious Meals Delivered to Your Doorstep – Order Now on Foodies.com!</h1>
         <p className='sm:text-2xl text-xl text-white my-4'>Welcome to Foodies.com – your go-to platform for easy online food ordering and delivery. Explore a wide variety of cuisines from your favorite local restaurants, delivered hot and fresh right to your door. Satisfy your cravings anytime, anywhere with just a few clicks. Order now and enjoy!</p>
       </div>

@@ -30,23 +30,6 @@ function PlaceOrder() {
 
   const placeOrder = async (e) => {
     e.preventDefault()
-    // let orderitems = []
-    // food_list.map((item) => {
-    //   if (count[item._id] > 0) {
-    //     let iteminfo = item
-    //     iteminfo["Quantity"] = count[item._id]
-    //     orderitems.push(iteminfo)
-    //   }
-    // })
-    // const orderDetiles = {
-    //   items: orderitems,
-    //   amount: gettotalamount() + 5,
-    //   address: data,
-    // }
-
-    // const res = await axios.post(`${url}/api/order/order`, orderDetiles, { withCredentials: true })
-    // toast.success("Order delivered")
-    // navigate("/myorder")
 
     const res = await axios.post(`${url}/api/payment/order`, { amount: gettotalamount() + 5 }, { withCredentials: true })
 

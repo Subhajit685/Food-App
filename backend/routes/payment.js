@@ -3,13 +3,16 @@ import { check } from "../middleware/check.js";
 const route = express.Router()
 import Razorpay from "razorpay"
 import crypto from "crypto"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 route.post("/order", check, async (req, res) => {
     try {
         const instance = new Razorpay({ key_id: process.env.YOUR_KEY_ID, key_secret: process.env.key_secret })
 
         const options = {
-            amount: req?.body.amount,  // amount in the smallest currency unit
+            amount: req?.body.amount * 100,  // amount in the smallest currency unit
             currency: "INR",
             receipt: "order_rcptid_11"
         };

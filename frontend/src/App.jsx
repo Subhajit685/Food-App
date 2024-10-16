@@ -13,6 +13,7 @@ import Admin from './pages/Admin'
 import Add from './pages/Add'
 import List from './pages/List'
 import Order from './pages/Order'
+import ConfiremOrder from './pages/ConfiremOrder'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/singup' element={!user ? <Singin /> : <Navigate to={"/"} />}></Route>
         <Route path='/login' element={!user ? <Login /> : <Navigate to={"/"} />}></Route>
         <Route path='/myorder' element={user ? <Myorder /> : <Navigate to={"/"} />}></Route>
+        <Route path='//success-payment-order/:id' element={user ? <ConfiremOrder/> : <Navigate to={"/"} />}></Route>
         {
           user?.email === "subhajit09111999@gmail.com" && ( <Route path='/admin' element={ <Admin /> }></Route>)
         }

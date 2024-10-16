@@ -51,25 +51,31 @@ function PlaceOrder() {
     const res = await axios.post(`${url}/api/payment/order`, { amount: gettotalamount() + 5 }, { withCredentials: true })
 
     var options = {
-      "key": res.data.key, // Enter the Key ID generated from the Dashboard
-      "amount": gettotalamount() + 5, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      "currency": "INR",
-      "name": "Foodie",
-      "description": "Test Transaction",
-      "image": "https://example.com/your_logo",
-      "order_id": res.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "callback_url": `${url}/api/payment/paymentVerification`,
-      "prefill": {
-        "name": "Gaurav Kumar",
-        "email": "gaurav.kumar@example.com",
-        "contact": "9000090000"
+      key: res.data.key, // Enter the Key ID generated from the Dashboard
+      amount: gettotalamount() + 5, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: "INR",
+      name: "Foodie",
+      description: "Test Transaction",
+      image: "https://example.com/your_logo",
+      order_id: res.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      callback_url: `${url}/api/payment/paymentVerification`,
+      prefill: {
+        name: "Gaurav Kumar",
+        email: "gaurav.kumar@example.com",
+        contact: "9000090000"
       },
-      "notes": {
+      notes: {
         "address": "Razorpay Corporate Office"
       },
-      "theme": {
-        "color": "#3399cc"
-      }
+      theme: {
+        color: "#3399cc"
+      },
+      method: {
+        upi: true, // Enable UPI
+        card: true,
+        netbanking: true,
+        wallet: true
+    }
     };
 
     const rzp1 = new window.Razorpay(options);

@@ -1,5 +1,5 @@
 import express from "express";
-import { check } from "../middleware/check";
+import { check } from "../middleware/check.js";
 const route = express.Router()
 import Razorpay from "razorpay"
 import crypto from "crypto"

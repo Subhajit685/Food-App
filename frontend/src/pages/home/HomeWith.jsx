@@ -9,7 +9,7 @@ function HomeWith() {
     <div className=''>
       <Navbar />
 
-      <div className='w-full hi overflow-hidden'>
+      <div className='w-full hi overflow-hidden px-4 md:px-8'>
         <img src="/beriyani.jpg" alt="" className='w-full hi mx-auto object-center object-cover border rounded' />
       </div>
 
